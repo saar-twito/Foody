@@ -1,0 +1,33 @@
+
+
+.card img {
+  border-radius: 15px;
+}
+
+.card-title {
+  color: rgb(87, 87, 87);
+}
+
+.card p {
+  font-family: "Open Sans", sans-serif;
+  color: rgb(128, 128, 128);
+}
+
+.btn {
+  position: absolute;
+  bottom: 20px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  background-color: #d8c86c;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.food-categories-header {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  color: #d8c86c;
+  font-size: 3.5rem;
+  margin-bottom: -10px;
+  letter-spacing: 3px;
+}
