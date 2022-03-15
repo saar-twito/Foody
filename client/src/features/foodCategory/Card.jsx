@@ -13,7 +13,6 @@ const Card = ({ category, handleSelection }) => (
           type="button"
           onClick={() => handleSelection(category)}
           className="btn"
-          
         >
           Bon appetit
         </button>

@@ -20,7 +20,6 @@ router.get('/me', [userAuth], async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
     try {
-
         // Validate user request
         const { error } = User.validateLogin(req.body);
         if (error) return res.status(400).send(error.details[0].message);
@@ -29,7 +28,6 @@ router.post('/login', async (req, res) => {
         let user = await User.findOne({ email: req.body.email });
         if (!user) return res.status(400).send("Invalid credentials");
 
-        
         // Check user's password
         const isPasswordCorrect = await bcrypt.compare(req.body.password, user.password);
         if (!isPasswordCorrect) return res.status(400).send("Invalid credentials");
@@ -85,7 +83,6 @@ router.post('/register', async (req, res) => {
 // Update profile
 router.patch('/editMe', [userAuth], async (req, res) => {
     try {
-
         // Valid updates
         const { error } = User.validateUpdates(req.body);
         if (error) return res.status(400).send(error.details[0].message);
@@ -103,6 +100,5 @@ router.patch('/editMe', [userAuth], async (req, res) => {
         res.status(500).send(error.message);
     }
 })
-
 
 module.exports = router

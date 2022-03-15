@@ -8,6 +8,7 @@ const foodCategory = require('../routes/FoodCategory/foodCategory');
 const recipe = require('../routes/Recipe/recipe');
 
 module.exports = (app, express) => {
+    
     app.use(fileUpload());
     app.use(express.json());
     app.use(cors());

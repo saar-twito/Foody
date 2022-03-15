@@ -10,7 +10,6 @@ const timeOfAnAction = (date) => {
 
 const isFileValid = (req, res) => {
     // Organization of the format
-    
     if (req.files === null) return false
     const file = req.files.filePath;
     const format = file.mimetype.split('/')
@@ -26,4 +25,3 @@ module.exports = {
     timeOfAnAction,
     isFileValid
 }
-

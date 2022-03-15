@@ -21,7 +21,6 @@ router.get('/me', [chefAuth], async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
     try {
-
         // Validate chef request
         const { error } = Chef.validateLogin(req.body);
         if (error) return res.status(400).send(error.details[0].message);
@@ -59,11 +58,9 @@ router.post('/register', async (req, res) => {
         let isExists = await User.exists({ email });
         if (isExists) return res.status(400).send("You are already registered as a user :)");
 
-
         // Check if the file is valid
         const file = isFileValid(req)
         if (!file) return res.status(400).send('Please make sure to upload the your profile\'s image in the file formats (png, jpg, jpeg, tiff) and the size image is equal or smaller than 1.5 MB');
-
 
         // Hash chef's password
         chef = new Chef(req.body);
@@ -71,7 +68,6 @@ router.post('/register', async (req, res) => {
 
         // Get time of registration
         chef.joined = timeOfAnAction(new Date())
-
 
         const path = process.env.ROOT_OF_FOOD_CHEF_PROFILE_IMAGES
 
@@ -81,7 +77,6 @@ router.post('/register', async (req, res) => {
             chef.filePath = `/uploads/chefsProfileImages/${file.name}`;
             await chef.save();
         });
-
 
         // Response
         res
@@ -99,7 +94,6 @@ router.post('/register', async (req, res) => {
 // Update profile
 router.patch('/editMe', [chefAuth], async (req, res) => {
     try {
-
         // Valid updates
         const { error } = Chef.validateUpdates(req.body);
         if (error) return res.status(400).send(error.details[0].message);
@@ -121,7 +115,6 @@ router.patch('/editMe', [chefAuth], async (req, res) => {
 // Update profile
 router.delete('/', [chefAuth], async (req, res) => {
     try {
-
         await Recipe.deleteMany({ chef: req.chef.id })
         await Chef.deleteOne({ _id: req.chef.id })
 

@@ -8,7 +8,6 @@ const router = express.Router();
 // Get recipes by food category id
 router.get('/foodCategory/:categoryId', async (req, res) => {
     try {
-
         // Check objectId
         const isValidObjectId = mongoose.isValidObjectId(req.params.categoryId);
         if (!isValidObjectId) return res.status(200).send("Category didn't found");
@@ -34,7 +33,6 @@ router.get('/foodCategory/:categoryId', async (req, res) => {
 // Get recipes by chef's name
 router.get('/chefId/:chefId', async (req, res) => {
     try {
-
         // Try to find a chef
         const isExists = await Chef.exists({ _id: req.params.chefId });
         if (!isExists) return res.status(200).send("Chef didn't found");
@@ -55,7 +53,6 @@ router.get('/chefId/:chefId', async (req, res) => {
 
 router.post('/like/:id', async (req, res) => {
     try {
-
         // Check objectId
         const isValidObjectId = mongoose.isValidObjectId(req.params.id);
         if (!isValidObjectId) return res.status(200).send("Recipe didn't found");

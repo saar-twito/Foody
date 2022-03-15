@@ -43,7 +43,7 @@ router.post('/create', async (req, res) => {
                 fileName: file.name,
             });
         });
-        
+
         res.status(201).send(await category.save());
     } catch (error) {
         res.status(500).send("Couldn't complete the getting profile process " + error.message)

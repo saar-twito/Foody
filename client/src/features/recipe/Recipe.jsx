@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getRecipes, handleLike } from "./recipeSlice";
 import Loader from "../../components/common/loader/Loader";
@@ -35,7 +35,6 @@ const Recipe = () => {
                 key={recipe._id}
                 recipe={recipe}
                 handleIncrementLike={handleIncrementLike}
-                // handleSelection={handleSelection}
               />
             ))}
           </div>

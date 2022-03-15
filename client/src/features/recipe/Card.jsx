@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CardLayout from "../../components/common/card/CardLayout";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { AiOutlineHeart } from "react-icons/ai";
 
 const Card = ({ recipe, handleIncrementLike, handleRecipeSelection }) => (
   <CardLayout>

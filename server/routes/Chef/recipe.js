@@ -9,7 +9,6 @@ const router = express.Router();
 // Create a new recipe
 router.post('/create', [chefAuth], async (req, res) => {
     try {
-
         // Check if a food category exists
         const foodCategory = await FoodCategory.findById(req.body.foodCategory);
         if (!foodCategory) return res.status(200).send("Category didn't found");
@@ -27,13 +26,10 @@ router.post('/create', [chefAuth], async (req, res) => {
         const recipesInCategory = chefRecipe.find(recipe => recipe.name === req.body.name)
         if (recipesInCategory) return res.status(400).send("You already have a recipe with this name")
 
-
         // Make array of ingredients
         req.body.ingredients = req.body.ingredients.split(",").map(item => item.trim());
 
         let recipe = new Recipe(req.body)
-        // foodCategory.items.push(recipe.id)
-        // await foodCategory.save()
 
         // Path to the folder in react
         const path = process.env.ROOT_OF_RECIPES_IMAGES
@@ -54,7 +50,6 @@ router.post('/create', [chefAuth], async (req, res) => {
 // Update
 router.patch('/:id', [chefAuth], async (req, res) => {
     try {
-
         // Validate updates
         const { error } = Recipe.validateUpdates(req.body);
         if (error) return res.status(400).send(error.details[0].message)
@@ -73,7 +68,6 @@ router.patch('/:id', [chefAuth], async (req, res) => {
 // Delete
 router.delete('/:id', [chefAuth], async (req, res) => {
     try {
-
         // Check objectId
         const isValidObjectId = mongoose.isValidObjectId(req.params.id);
         if (!isValidObjectId) return res.status(200).send("Recipe didn't found");
@@ -93,10 +87,4 @@ router.delete('/:id', [chefAuth], async (req, res) => {
     }
 })
 
-
-
-
-
-
 module.exports = router
-

@@ -1,6 +1,5 @@
 import React from "react";
 
-// import FoodCategory from "../../features/foodCategory/FoodCategory";
 const Home = () => {
   return (
     <div>
